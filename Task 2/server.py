@@ -10,14 +10,10 @@ def connect(sid,enviorn):
 @sio.event
 def disconnect(sid):
     print('Client disconnected:', sid)
-    
-@sio.event
-def server_message(sid,data):
-    sio.send(data)
-    
+        
 @sio.on('recieve_msg')
 def on_random(sid, data):
-    print(f"Received message {data} from client {sid}")
+    print(f"Received message {data} : {sid}")
     sio.emit('receive_data', 'hi from server')
 
 if __name__ == '__main__':
